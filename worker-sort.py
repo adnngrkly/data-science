@@ -14,7 +14,7 @@ class Worker():
         self.age = age
         self.mail = mail
         self.salary = salary        
-        self.__class__.staff_object.append(self)
+        Worker.staff_object.append(self)
         
     def __repr__(self):
         return repr((self.name, self.age, self.mail, self.salary))
