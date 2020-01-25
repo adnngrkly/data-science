@@ -1,1 +1,153 @@
 
+listname=[]
+listsurname=[]
+listage=[]
+listsalary=[]
+listemail=[]
+listnameandsurname=[]
+total_salary=0
+listraise=[]
+def raiserate():
+    while True:
+        try:        
+            raiserate=int(input("enter rate of raise:   "))
+            break
+        except ValueError:
+            print("Oops!  That was no valid number.  Try again...")
+            continue
+    return raiserate
+class workers():
+    listsurname=list()
+    listage=list()   
+    def __init__(self,listname,listsurname,listage,listsalary,listemail):
+        self.listname=listname
+        self.listsurname=listsurname
+        self.listage=listage
+        self.listsalary=listsalary
+        self.listemail=listemail
+    def name(self,listname):
+        i=1
+        for each in self.listname:
+            print ("{}={}".format(i,each))
+            i+=1
+    def surname(self,listsurname):
+        i=1
+        for each in self.listsurname:
+            print ("{}={}".format(i,each))
+            i+=1            
+    def nameandsurname(self,listnameandsurname):
+        self.listnameandsurname=listnameandsurname
+        i=0
+        for each in self.listname:
+            print("{}={} {}".format(i+1,self.listname[i],self.listsurname[i]))
+            i+=1
+    def age(self,listage):
+        i=0
+        for each in self.listage:
+            print ("{}={} {} {} yasinda".format(i+1,self.listname[i],self.listsurname[i],each))
+            i+=1
+    def salary(self,listsalary):
+        i=0
+        for each in self.listsalary:
+            print ("{}={} {} {} $".format(i+1,self.listname[i],self.listsurname[i],each))
+            i+=1
+    def email(self,listemail):        
+        i=0
+        for each in self.listemail:
+            print ("{}={} {} {} ".format(i+1,self.listname[i],self.listsurname[i],each))
+            i+=1         
+    def allinformation(self,listname,listsurname,listsalary,listage,listemail):        
+        i=0
+        for each in self.listemail:
+            print ("{}={} {} {} yasinda {} $ {}".format(i+1,self.listname[i],self.listsurname[i],self.listage[i],self.listsalary[i],each))
+            i+=1
+    def raise_salary(self,raise_salary,listraise):
+        self.raise_salary=raise_salary
+        self.listraise=listraise
+        i=0
+        for each in self.listsalary:
+            self.salary=(each)+((each*self.raise_salary)/100)
+            self.listraise.append((each*self.raise_salary)/100)
+            print ("{}={} {} {} $".format(i+1,self.listname[i],self.listsurname[i],self.salary))
+            i+=1
+    def total_salary(self,total_salary):
+        self.total_salary=total_salary
+        for each in listraise:
+            self.total_salary+=each
+        return print("Total salaries=",self.total_salary)
+general=workers(listname,listsurname,listage,listsalary,listemail)
+def top_ofthe_cod():
+    explanation=input("""Please, choose what do you want
+      1= Enter the new user information\n 
+      2= sort_by_name\n
+      3= sort_by_surname\n
+      4= sort_by_nameandsurname\n
+      5= sort_by_age\n
+      6= sort_by_salary\n
+      7= sort_by email\n
+      8= in order to show all information which is reletad to all workers\n
+      9= doing raise salary\n
+      10= demonstrate totaly salary\n
+      11= exit\n""")
+    if explanation=="1":
+        while True: 
+            while True:
+                try:
+                    
+                    name=input("Enter the name   ")
+                    surname=input("Enter the surname   ")
+                    age=int(input("Enter the age   "))
+                    salary=int(input("Enter the salary   "))
+                    email=input("Enter the email   ")
+                    break
+                except ValueError:
+                    print("Oops!  That was no valid number.  Try again...")
+                    continue
+            listname.append(name)
+            listsurname.append(surname)
+            listage.append(age)
+            listsalary.append(salary)
+            listemail.append(email)
+            question=input("""if you want to create other account, Enter the 1\n
+                              if you go to the main menu enter the 2\n 
+                              if you want to quit enter the 3\n""")
+            if question=="1":
+                continue
+            elif question=="2":
+                top_ofthe_cod()
+            elif question=="3":
+                break
+    elif explanation=="2":
+        general.name(listname)
+        top_ofthe_cod()
+    elif explanation=="3":
+        general.surname(listsurname)
+        top_ofthe_cod()
+    elif explanation=="4":
+        general.nameandsurname(listnameandsurname)
+        top_ofthe_cod()
+    elif explanation=="5":
+        general.age(listage)
+        top_ofthe_cod()
+    elif explanation=="6":
+        general.salary(listsalary)
+        top_ofthe_cod()
+    elif explanation=="7":
+        general.email(listemail)
+        top_ofthe_cod()
+    elif explanation=="8":
+        general.allinformation(listname,listsurname,listage,listsalary,listemail)
+        top_ofthe_cod()
+    elif explanation=="9":    
+        raise_salary=raiserate()
+        general.raise_salary(raise_salary,listraise)
+        top_ofthe_cod()
+    elif explanation=="10":
+        general.total_salary(total_salary)
+        top_ofthe_cod()
+    elif explanation=="11":
+        exit()
+    else:
+        print("you enter wrongly!!!!!!!!!!!")
+        top_ofthe_cod()
+top_ofthe_cod()
